@@ -1,0 +1,341 @@
+<!doctype html>
+<html class="no-js" lang="pt-br" ng-app="stpa" ng-controller="MorrisCtrl as vm">
+    <head>
+        <meta charset="utf-8">
+        <title>angular morris chart - wrapper directives of morris.js for angular</title>
+        <meta name="description" content="angular morris chart provides a wrapper directives of morris.js for angular">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="stpa.co" />
+        <meta name="robots" content="index, follow"/>
+        <meta content="article" property="og:type">
+        <meta content="angular morris chart - wrapper directives of morris.js for angular" property="og:title">
+        <meta content="angular morris chart provides wrapper directives of morris.js for angular" property="og:description">
+        <meta content="https://angular-morris-chart.stpa.co" property="og:url">
+        <meta content="https://stpa.co/about/" property="article:author">
+        <meta content="https://stpa.co/assets/images/stpa-symbol.png" property="og:image">
+        <meta content="angularjs" property="article:section">
+        <meta content="modal" property="article:tag">
+        <meta content="angular.js" property="article:tag">
+        <meta content="morris.js" property="article:tag">
+        <meta content="chart" property="article:tag">
+        <link rel="shortcut icon" href="https://stpa.co/assets/images/favicon.png">
+        <link rel="stylesheet" href="css/vendor-6604bd66.css">
+        <link rel="stylesheet" href="./css/example.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/8.4.0/styles/github.min.css">
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser.
+        Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+    </p>
+<![endif]-->
+        <a href="https://github.com/stpa-co/angular-morris-chart"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul class="nav tabs-vertical col-sm-3" role="tablist">
+                            <li class="text-center">
+                                <a href="http://stpa.co" class="logo">
+                                <img src="https://stpa.co/assets/images/stpa-symbol.png">
+                                </a>
+                                <h1>angular morris chart</h1>
+                                <!-- GIT STAR -->
+                                <a class="github-button" href="https://github.com/stpa-co/angular-morris-chart" data-icon="octicon-star" data-count-href="/stpa-co/angular-morris-chart/stargazers" data-count-api="/repos/stpa-co/angular-morris-chart#stargazers_count">Star</a>
+                                <!-- /GIT STAR -->
+                                <p>
+                                <p>angular morris chart provides a wrapper of <code>morris.js</code> for angular</p>
+
+                                </p>
+                            </li>
+                            <li>
+                                <hr />
+                            </li>                        
+                            <li role="presentation">
+                            <a href="#install" id="install-tab" role="tab" data-toggle="tab" aria-controls="install" aria-expanded="true">Install</a></li>
+                            <li role="presentation" class="active">
+                            <a href="#sample" role="tab" id="sample-tab" data-toggle="tab" aria-controls="sample" aria-expanded="false">Examples</a></li>
+                            <li>
+                                <hr />
+                            </li>
+                            <li class="text-center copyright">
+                                Built with love by <a href="https://twitter.com/stewones">@stewones</a> using gulp.js, angular.js, morris.js and twitter bootstrap.
+                                <br />
+                                Open an <a href="https://github.com/stpa-co/angular-morris-chart/issues">issue</a> and make your <a href="https://github.com/stpa-co/angular-morris-chart/pulls">pull-request</a>.
+                                <br />
+                                Code licensed under MIT.
+                            </li>
+                            <li class="gh">
+                                <!-- GIT FOLLOW -->
+                                <a class="github-button" href="https://github.com/stewones" data-count-href="/stewones/followers" data-count-api="/users/stewones#followers">Follow me @GitHub</a>
+                                <!-- /GIT FOLLOW -->
+                            </li>
+                        </ul>
+                        <div id="" class="tab-content col-sm-9">
+                            <div role="tabpanel" class="tab-pane fade" id="install" aria-labelledby="install-tab">
+                                <h2 id="install-for-production">Install for production</h2>
+<hr>
+<p>install <code>angular-morris-chart</code> running the following command</p>
+<pre><code class="lang-shell">$ bower install angular-morris-chart --save
+</code></pre>
+<ul>
+<li><strong>Note:</strong> if you are asked about <code>Unable to find a suitable version for angular</code> answer <code>angular#1.3.x which is required by angular-morris-chart</code>.</li>
+<li><p><strong>Note:</strong> if you are issued about <code>github.com connection timed out</code> just run <code>git config --global url.https://.insteadOf git://</code> in terminal.</p>
+</li>
+<li><p>include <code>angular-morris-chart.min.js</code> on your project. It should be located at <code>bower_components/angular-morris-chart/src</code> when you do installation by bower, otherwise just include the file <code>angular-morris-chart.min.js</code> to your project</p>
+</li>
+</ul>
+<pre><code class="lang-html">&lt;script src=&quot;../bower_components/angular-morris-chart/src/angular-morris-chart.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<ul>
+<li>add <code>stpa.chart</code> as a module dependency to your app</li>
+</ul>
+<pre><code class="lang-js">angular.module(&#39;my.app&#39;, [
+    &#39;stpa.chart&#39;
+])
+</code></pre>
+<h2 id="usage">Usage</h2>
+<hr>
+<p>There are four directives based on <code>morris.js</code></p>
+<ul>
+<li><code>bar-chart</code></li>
+<li><code>line-chart</code></li>
+<li><code>donut-chart</code></li>
+<li><code>area-chart</code></li>
+</ul>
+<p>Check out <a href="https://angular-morris-chart.stpa.co">documentation</a> for live examples</p>
+<h2 id="install-for-development">Install for development</h2>
+<hr>
+<ul>
+<li>install node and bower on your environment</li>
+<li>cd to your development folder and clone repo</li>
+</ul>
+<pre><code class="lang-sh">$ git clone https://github.com/stpa-co/angular-morris-chart
+$ cd angular-morris-chart
+</code></pre>
+<ul>
+<li>install module dependencies</li>
+</ul>
+<pre><code class="lang-sh">$ npm install
+$ bower install
+</code></pre>
+<ul>
+<li><p><strong>Note:</strong> if you are issued about <code>github.com connection timed out</code> just run <code>git config --global url.https://.insteadOf git://</code> in terminal.</p>
+</li>
+<li><p>serve project and do the work</p>
+</li>
+</ul>
+<pre><code class="lang-sh">$ gulp serve #Note: maybe you should have to use `sudo`
+</code></pre>
+<ul>
+<li>serve project on distribution mode</li>
+</ul>
+<pre><code class="lang-sh">$ gulp serve:dist #Note: maybe you should have to use `sudo`
+</code></pre>
+<ul>
+<li>build project to distribution</li>
+</ul>
+<pre><code class="lang-sh">$ gulp build #Note: maybe you should have to use `sudo`
+</code></pre>
+<p><strong>Note:</strong> running the command <code>gulp build</code> should generate minified src at <code>src/angular-morris-chart.min.js</code>, and the docs on <code>dist/doc</code> folder.</p>
+<p><strong>Note:</strong> running the command <code>gulp serve</code> should serve on <code>http://localhost:3000/doc</code> with live reload. It also should watch the changes to re-build all the things, generating minified src at <code>src/angular-morris-chart.min.js</code>, and docs on <code>dist/doc</code> folder.</p>
+<p><strong>Note:</strong> running the command <code>gulp serve:dist</code> should do the same above but with all bower dependencies minified.</p>
+<p><strong>Note:</strong> to update project src please open an issue, fork the project, do your work, run <code>gulp build</code> and make a pull-request. thx =D </p>
+<p><strong>Note:</strong> to update docs just run <code>gulp build</code> or <code>./buil.sh</code>, and make a pull-request into <code>gh-pages</code> branch only with contents of <code>dist/doc</code> folder. I like to work with another folder only for the docs (pointing to the same remote), maybe you will also. You can use the <code>build.sh</code> script located in the root to automate the process, but check it before.</p>
+<p><strong>Note</strong> Also check the tasks located on gulp folder for more details.</p>
+<p>Feel free to open issues if you run into a problem or if you just have suggestions. Pull Requests are always welcome.</p>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li>1.0.0<ul>
+<li>launched <code>angular-morris-chart</code> for easy creation of <code>morris.js</code> based charts.</li>
+</ul>
+</li>
+</ul>
+<h2 id="license">License</h2>
+<hr>
+<p>The <code>angular-morris-chart</code> is open-sourced software licensed under the <a href="http://opensource.org/licenses/MIT">MIT</a> license. Crafted by <a href="https://twitter.com/stewones">@stewones</a></p>
+
+                            </div>                           
+                            <div role="tabpanel" class="tab-pane fade active in" id="sample" aria-labelledby="sample-tab">
+                                <h2 id="usage">Usage</h2>
+<hr>
+<p>Just add <code>stpa.chart</code> as a module dependency to your app and use the directives as below</p>
+<pre><code class="lang-js">angular.module(&#39;my.app&#39;, [
+    &#39;stpa.chart&#39;
+])
+</code></pre>
+<h2 id="bar-chart">Bar Chart</h2>
+<hr>
+<pre><code class="lang-html">&lt;div
+bar-chart 
+bar-data=&#39;[
+    { y: &quot;2006&quot;, a: 100, b: 90 },
+    { y: &quot;2007&quot;, a: 75,  b: 65 },
+    { y: &quot;2008&quot;, a: 50,  b: 40 },
+    { y: &quot;2009&quot;, a: 75,  b: 65 },
+    { y: &quot;2010&quot;, a: 50,  b: 40 },
+    { y: &quot;2011&quot;, a: 75,  b: 65 },
+    { y: &quot;2012&quot;, a: 100, b: 90 }
+]&#39;
+bar-x=&#39;y&#39;
+bar-y=&#39;[&quot;a&quot;, &quot;b&quot;]&#39;
+bar-labels=&#39;[&quot;Series A&quot;, &quot;Series B&quot;]&#39;&gt;
+&lt;/div&gt;
+</code></pre>
+<div
+bar-chart 
+bar-data='[
+    { y: "2006", a: 100, b: 90 },
+    { y: "2007", a: 75,  b: 65 },
+    { y: "2008", a: 50,  b: 40 },
+    { y: "2009", a: 75,  b: 65 },
+    { y: "2010", a: 50,  b: 40 },
+    { y: "2011", a: 75,  b: 65 },
+    { y: "2012", a: 100, b: 90 }
+]'
+bar-x='y'
+bar-y='["a", "b"]'
+bar-labels='["Series A", "Series B"]'>
+</div>
+
+
+<h2 id="donut-chart">Donut Chart</h2>
+<hr>
+<pre><code class="lang-html">&lt;div
+donut-chart
+donut-data=&#39;[
+    {label: &quot;Download Sales&quot;, value: 12},
+    {label: &quot;In-Store Sales&quot;,value: 30},
+    {label: &quot;Mail-Order Sales&quot;, value: 20}
+]&#39;&gt;
+&lt;/div&gt;
+</code></pre>
+<div
+donut-chart
+donut-data='[
+    {label: "Download Sales", value: 12},
+    {label: "In-Store Sales",value: 30},
+    {label: "Mail-Order Sales", value: 20}
+]'>
+</div>
+
+
+<h2 id="line-chart">Line Chart</h2>
+<hr>
+<pre><code class="lang-html">&lt;div
+line-chart
+line-data=&#39;[
+    { y: &quot;2006&quot;, a: 100, b: 90 },
+    { y: &quot;2007&quot;, a: 75,  b: 65 },
+    { y: &quot;2008&quot;, a: 50,  b: 40 },
+    { y: &quot;2009&quot;, a: 75,  b: 65 },
+    { y: &quot;2010&quot;, a: 50,  b: 40 },
+    { y: &quot;2011&quot;, a: 75,  b: 65 },
+    { y: &quot;2012&quot;, a: 100, b: 90 }
+]&#39;
+line-xkey=&#39;y&#39;
+line-ykeys=&#39;[&quot;a&quot;, &quot;b&quot;]&#39;
+line-labels=&#39;[&quot;Serie A&quot;, &quot;Serie B&quot;]&#39;
+line-colors=&#39;[&quot;#31C0BE&quot;, &quot;#7a92a3&quot;]&#39;&gt;
+&lt;/div&gt;
+</code></pre>
+<div
+line-chart
+line-data='[
+    { y: "2006", a: 100, b: 90 },
+    { y: "2007", a: 75,  b: 65 },
+    { y: "2008", a: 50,  b: 40 },
+    { y: "2009", a: 75,  b: 65 },
+    { y: "2010", a: 50,  b: 40 },
+    { y: "2011", a: 75,  b: 65 },
+    { y: "2012", a: 100, b: 90 }
+]'
+line-xkey='y'
+line-ykeys='["a", "b"]'
+line-labels='["Serie A", "Serie B"]'
+line-colors='["#31C0BE", "#7a92a3"]'>
+</div>
+
+<h2 id="area-chart">Area Chart</h2>
+<hr>
+<pre><code class="lang-html">&lt;div
+area-chart
+area-data=&#39;[
+    { y: &quot;2006&quot;, a: 100, b: 90 },
+    { y: &quot;2007&quot;, a: 75,  b: 65 },
+    { y: &quot;2008&quot;, a: 50,  b: 40 },
+    { y: &quot;2009&quot;, a: 75,  b: 65 },
+    { y: &quot;2010&quot;, a: 50,  b: 40 },
+    { y: &quot;2011&quot;, a: 75,  b: 65 },
+    { y: &quot;2012&quot;, a: 100, b: 90 }
+  ]&#39;
+area-xkey=&#39;y&#39;
+area-ykeys=&#39;[&quot;a&quot;, &quot;b&quot;]&#39;
+area-labels=&#39;[&quot;Serie A&quot;, &quot;Serie B&quot;]&#39;&gt;
+&lt;/div&gt;
+</code></pre>
+<div
+area-chart
+area-data='[
+    { y: "2006", a: 100, b: 90 },
+    { y: "2007", a: 75,  b: 65 },
+    { y: "2008", a: 50,  b: 40 },
+    { y: "2009", a: 75,  b: 65 },
+    { y: "2010", a: 50,  b: 40 },
+    { y: "2011", a: 75,  b: 65 },
+    { y: "2012", a: 100, b: 90 }
+  ]'
+area-xkey='y'
+area-ykeys='["a", "b"]'
+area-labels='["Serie A", "Serie B"]'>
+</div>
+                            </div>
+                
+                            <br />
+                            <ul class="social">
+                                <li style="width: 140px; text-align: left;">
+                                    <!-- FB -->
+                                    <iframe src="//www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fangular-morris-chart.stpa.co&amp;layout=button_count" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
+                                    <!-- /FB -->
+                                </li>
+                                <li style="width: 154px; margin-right: 12px;" class="hidden-xs">
+                                    <!-- G+ -->
+                                    <div class="g-plus" data-action="share" data-annotation="bubble" data-href="https://angular-morris-chart.stpa.co"></div>
+                                    <!-- /G+ -->
+                                </li>
+                                <li style="margin-right: 12px;" class="visible-lg">
+                                    <!-- TW+ -->
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="angularjs">Tweet</a>
+                                    <!-- /TW+ -->
+                                </li>
+                                <li style="margin-right: 12px;" class="visible-lg">
+                                    <!-- GIT WATCH -->
+                                    <a class="github-button" href="https://github.com/stpa-co/angular-morris-chart" data-icon="octicon-eye" data-count-href="/stpa-co/angular-morris-chart/watchers" data-count-api="/repos/stpa-co/angular-morris-chart#subscribers_count">Watch</a>
+                                    <!-- /GIT WATCH -->
+                                </li>
+                                <li style="margin-right: 12px;" class="hidden-xs">
+                                    <!-- GIT ISSUE -->
+                                    <a class="github-button" href="https://github.com/stpa-co/angular-morris-chart/issues" data-icon="octicon-issue-opened" data-count-api="/repos/stpa-co/angular-morris-chart#open_issues_count">Issue</a>
+                                    <!-- /GIT ISSUE -->
+                                </li>
+                                <li class="visible-lg">
+                                    <!-- FORK -->
+                                    <a class="github-button" href="https://github.com/stpa-co/angular-morris-chart" data-icon="octicon-git-branch" data-count-href="/stpa-co/angular-morris-chart/network" data-count-api="/repos/stpa-co/angular-morris-chart#forks_count">Fork</a>
+                                    <!-- /FORK -->
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/highlight.js/8.4.0/highlight.min.js"></script>
+        <script src="js/vendor-ca2eec03.js"></script>
+        <script src="./js/angular-morris-chart.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://buttons.github.io/buttons.js" async defer id="github-bjs"></script>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <script src="./js/example.js"></script>
+    </body>
+</html>
