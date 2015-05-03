@@ -135,7 +135,8 @@
                 areaData: '=',
                 areaXkey: '@',
                 areaYkeys: '@',
-                areaLabels: '@'
+                areaLabels: '@',
+		areaHideHover: '@'
             },
             link: function(scope, elem, attrs) {
                 scope.$watch('areaData', function() {
@@ -146,7 +147,9 @@
                                 data: scope.areaData,
                                 xkey: scope.areaXkey,
                                 ykeys: JSON.parse(scope.areaYkeys),
-                                labels: JSON.parse(scope.areaLabels)                            });
+                                labels: JSON.parse(scope.areaLabels),
+				hideHover: scope.areaHideHover
+                            });
                         } else {
                             scope.areaInstance.setData(scope.areaData);
                         }
